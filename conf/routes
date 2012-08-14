@@ -5,5 +5,10 @@
 # Home page
 GET     /                           controllers.Application.index
 
+# 
+# this will send back a JSON object w/ the request data and some meta data 
+# about the request
+POST    /echoName                   controllers.Application.echoName
+
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)

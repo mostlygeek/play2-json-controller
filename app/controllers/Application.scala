@@ -8,5 +8,22 @@ object Application extends Controller {
   def index = Action {
     Ok(views.html.index("Your new application is ready."))
   }
+ 
+  /**
+   * To test w/ curl 
+   *
+   * curl --header "Content-type: application/json" \
+   *      --request POST --data '{"name": "mostlygeek"}' \
+   *      http://localhost:9000/echoName
+   * 
+   * @return  Unknown
+   */
+  def echoName = Action(parse.json) { request => 
+    (request.body \ "name").asOpt[String].map { name => 
+      Ok("Hello: " + name) 
+    }.getOrElse {
+      BadRequest("Missing json value: [name]")
+    }
+  }
   
 }
