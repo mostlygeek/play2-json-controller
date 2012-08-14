@@ -9,6 +9,10 @@ This mini-project demonstrates
 * working with the json body as the default JsValue
 * working with the json body, by converting the JsValue to a Case class
 
+## Try it out
+
+* [DEMO](http://play2-json-controller.herokuapp.com/)
+
 ## References
 
 * [Working with JSON in Play](http://www.playframework.org/documentation/2.0.2/ScalaJson/)
