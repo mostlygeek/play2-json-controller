@@ -2,7 +2,6 @@
 # it makes use of jQuery's promises... so easy with 
 # coffeescript
 send = (url, obj) ->
-    # this 
     json = JSON.stringify obj
     out("Sending: #{json}")
     $.ajax 
@@ -12,8 +11,13 @@ send = (url, obj) ->
         # required for play framework to recognize what
         # the data type is, by default jQuery sends
         # application/x-www-form-urlencoded
+        contentType: "application/json; charset=UTF-8"
 
-        contentType: "application/json"
+        # changes the request accept header to 
+        # expect an application/json reesponse
+        dataType: "json"
+
+        # send a String...
         data: json
 
 out = (content) ->
@@ -25,5 +29,5 @@ $ ->
         url = "/echoName"
         p = send url, name: name
         p.success (resp) -> 
-            out "Done: got #{resp}"
+            out "Done, response: #{JSON.stringify(resp)}"
     

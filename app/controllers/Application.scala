@@ -2,6 +2,7 @@ package controllers
 
 import play.api._
 import play.api.mvc._
+import play.api.libs.json.Json
 
 object Application extends Controller {
   
@@ -11,7 +12,8 @@ object Application extends Controller {
  
   def echoName = Action(parse.json) { request => 
     (request.body \ "name").asOpt[String].map { name => 
-      Ok(name)
+      val json = Json.toJson(Map("name" -> name))
+      Ok(json)
     }.getOrElse {
       BadRequest("Missing json value: [name]")
     }
