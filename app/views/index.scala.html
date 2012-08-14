@@ -19,6 +19,30 @@
     <h2>Results</h2>
     <pre id="output"></pre>
 
+    <h2>How does it work?</h2>
+    <p>You basically have to make a few of things play nicely. 
+       <ol>
+           <li>jQuery needs to send ajax POST requests with a manual
+           <code>contentType</code>.</li>
+           <li>The ajax <code>data</code> attribute needs to be a single 
+               string (or json).</li>
+           <li>The <code>Action</code> on the server side needs to know
+               to parse the POST body as json.</li>
+       </ol>
+       </p>
+       <p>There are a couple of files to look at in the  <a href="https://github.com/mostlygeek/play2-json-controller">github
+           repository</a>. </p>
+       <h3>The Controller</h3>
+       <script src="http://gist-it.appspot.com/github/mostlygeek/play2-json-controller/raw/master/app/controllers/Application.scala"></script>
+
+       <h3>The Coffeescript</h3>
+       <p>This is where the tweaks are important. Don't use jQuery's default
+          <code>$.post</code> method as this won't set the correct contentType and 
+          the play framework will return a 400 Bad Request response.</p>
+       <script src="http://gist-it.appspot.com/github/mostlygeek/play2-json-controller/raw/master/app/assets/js/index.coffee"></script>
+       
+
+
 <a href="https://github.com/mostlygeek/play2-json-controller"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
 </body>
 </html>
