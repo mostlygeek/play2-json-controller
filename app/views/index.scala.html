@@ -9,14 +9,17 @@
 <body>
     <h1>Test POSTing of JSON to Play! Framework</h1> 
     <h2>About</h2>
-    <p>This test will send an ajax request with a POST body of pure json. 
-       accomplished pretty easily with jQuery, by telling it that the 
-       content type of the body is "application/json" and only having
-       a JSON string as the <code>data</code> attribute.  </p>
+    <p>This demo will send an ajax request with a POST body of pure json. 
+       This uses jQuery's ajax functions but not over-rides the default
+       encoding functionality. </p>
+    <p>The result is ajax POST calls that work nicely with Play's JSON body
+       parser.</p>
     
+    <h2>Demo</h2> 
     name <input type="text" id="name" value="mostlygeek" /> 
     <button id="sendName">POST it to /sendName</button> 
     <h2>Results</h2>
+    <button id="clear" onClick="$('#output').empty()">Clear</button>
     <pre id="output"></pre>
 
     <h2>How does it work?</h2>
