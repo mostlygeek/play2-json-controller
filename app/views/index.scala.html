@@ -1,7 +1,17 @@
-@(message: String)
-
-@main("Welcome to Play 2.0") {
-    
-    @play20.welcome(message)
-    
-}
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test Play Framework 2.0 JSON Controller</title>
+    <script src="/assets/javascripts/jquery-1.7.1.min.js"></script>
+    <script src="/assets/js/index.js"></script>
+</head>
+<body>
+    <h1>Test Play Framework 2.0</h1> 
+    <ul>
+        <li><button id="sendName">POST to /sendName</button></li>
+    </ul>
+    <h2>Output  - <span id="count">0</span> requests</h2>
+    <div id="output"></div>
+</body>
+</html>
