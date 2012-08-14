@@ -1,9 +1,12 @@
 # this sends an HTTP POST request with a JSON body
 # it makes use of jQuery's promises... so easy with 
 # coffeescript
+sanitize = (str) -> 
+    str.replace(/</g, "&lt;").replace(/>/g,"&gt;")
+
 send = (url, obj) ->
     json = JSON.stringify obj
-    out("Sending: #{json}")
+    out("Sending: #{sanitize(json)}")
     $.ajax 
         type: "POST"
         url: url 
@@ -29,5 +32,6 @@ $ ->
         url = "/echoName"
         p = send url, name: name
         p.success (resp) -> 
-            out "Done, response: #{JSON.stringify(resp)}"
+            json = JSON.stringify(resp)
+            out "Done, response: #{sanitize(json)}"
     
