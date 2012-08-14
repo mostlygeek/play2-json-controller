@@ -20,7 +20,7 @@ object Application extends Controller {
    */
   def echoName = Action(parse.json) { request => 
     (request.body \ "name").asOpt[String].map { name => 
-      Ok("Hello: " + name) 
+      Ok(name)
     }.getOrElse {
       BadRequest("Missing json value: [name]")
     }

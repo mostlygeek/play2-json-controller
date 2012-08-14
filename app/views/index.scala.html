@@ -2,16 +2,23 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Test Play Framework 2.0 JSON Controller</title>
-    <script src="/assets/javascripts/jquery-1.7.1.min.js"></script>
-    <script src="/assets/js/index.min.js"></script>
+    <title>Test POSTing of JSON to Play! Framework</title>
+    <script src='@routes.Assets.at("javascripts/jquery-1.7.1.min.js")'></script>
+    <script src='@routes.Assets.at("js/index.min.js")'></script>
 </head>
 <body>
-    <h1>Test Play Framework 2.0</h1> 
-    <ul>
-        <li><button id="sendName">POST to /sendName</button></li>
-    </ul>
-    <h2>Output  - <span id="count">0</span> requests</h2>
+    <h1>Test POSTing of JSON to Play! Framework</h1> 
+    <h2>About</h2>
+    <p>This test will send an ajax request with a POST body of pure json. 
+       accomplished pretty easily with jQuery, by telling it that the 
+       content type of the body is "application/json" and only having
+       a JSON string as the <code>data</code> attribute.  </p>
+    
+    name <input type="text" id="name" value="mostlygeek" /> 
+    <button id="sendName">POST it to /sendName</button> 
+    <h2>Results</h2>
     <pre id="output"></pre>
+
+<a href="https://github.com/mostlygeek/play2-json-controller"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub"></a>
 </body>
 </html>

@@ -3,6 +3,8 @@
 # coffeescript
 send = (url, obj) ->
     # this 
+    json = JSON.stringify obj
+    out("Sending: #{json}")
     $.ajax 
         type: "POST"
         url: url 
@@ -12,17 +14,16 @@ send = (url, obj) ->
         # application/x-www-form-urlencoded
 
         contentType: "application/json"
-        data: JSON.stringify obj
+        data: json
+
+out = (content) ->
+    $('#output').append("#{content}\n")
 
 $ -> 
-    count = 0
-    out = (content) ->
-        count++ 
-        $('#count').text(count)
-        $('#output').html(content)
-
     $('#sendName').on "click", -> 
-        p = send "/echoName", name: "mostlygeek"
+        name = $('#name').val()
+        url = "/echoName"
+        p = send url, name: name
         p.success (resp) -> 
-            out(resp)
+            out "Done: got #{resp}"
     
