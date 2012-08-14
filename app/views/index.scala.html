@@ -15,15 +15,21 @@
     <p>The result is ajax POST calls that work nicely with Play's JSON body
        parser.</p>
     
-    <h2>Demo</h2> 
-    name <input type="text" id="name" value="mostlygeek" /> 
+    <h2>Demo 1 - name echo</h2> 
+    name <input type="text" id="name" value="mostlygeek" /> <br/>
     <button id="sendName">POST it to /sendName</button> 
-    <h2>Results</h2>
+
+    <h2>Demo 2 - case classes</h2>
+    Sender: <input type="text" id="sender" value="mostlygeek" /><br/>
+    Message: <br/><textarea id="message">Hello! Play Framework!</textarea><br/>
+    <button id="sendMsg">send message</button>
+     
+    <h2>Responses</h2>
     <button id="clear" onClick="$('#output').empty()">Clear</button>
     <pre id="output"></pre>
 
     <h2>How does it work?</h2>
-    <p>You basically have to make a few of things play nicely. 
+    <p>You have to make a few of things play nicely. 
        <ol>
            <li>jQuery needs to send ajax POST requests with a manual
            <code>contentType</code>.</li>

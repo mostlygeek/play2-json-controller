@@ -4,10 +4,16 @@
 sanitize = (str) -> 
     str.replace(/</g, "&lt;").replace(/>/g,"&gt;")
 
+reqCounter = 0
 send = (url, obj) ->
     json = JSON.stringify obj
-    out("Sending: #{sanitize(json)}")
-    $.ajax 
+    
+    reqCounter++
+
+    # so we don't lose the value in multiple async calls
+    count = reqCounter
+    out("#{count}) Sending: #{sanitize(json)}")
+    p = $.ajax 
         type: "POST"
         url: url 
 
@@ -22,16 +28,25 @@ send = (url, obj) ->
 
         # send a String...
         data: json
+    p.success (resp) ->
+        json = JSON.stringify resp
+        out "#{count}) Done. Response: #{sanitize json}"
+    p.fail (xhr, type, message)->
+        out "FAIL: #{xhr.status} #{url} #{message}"
 
 out = (content) ->
     $('#output').append("#{content}\n")
 
+# jquery DOM Ready... 
 $ -> 
     $('#sendName').on "click", -> 
         name = $('#name').val()
         url = "/echoName"
-        p = send url, name: name
-        p.success (resp) -> 
-            json = JSON.stringify(resp)
-            out "Done, response: #{sanitize(json)}"
-    
+        send url, name: name
+
+    $("#sendMsg").on "click", ->
+        sender = $("#sender").val()
+        msg = $('#message').val()
+        url = "/echoMsg"
+        send url, sender: sender, message: msg
+         
